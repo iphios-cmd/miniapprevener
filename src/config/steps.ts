@@ -22,7 +22,6 @@ export const SUPPORT_USERNAME = '@RevengSupportBot';
 
 /** Положите файл сюда: public/video/instruction.mp4 */
 export const VIDEO_URL = 'video/instruction.mp4';
-export const VIDEO_POSTER = 'video/poster.jpg';
 
 // Порядок и подписи соответствуют обновлённой серии из 12 изображений.
 export const STEPS: InstructionStep[] = [
