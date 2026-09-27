@@ -7,7 +7,6 @@ type Props = {
   step: number;
   onBack: () => void;
   onNext: () => void;
-  onClose: () => void;
   onAction: (url: string) => void;
   haptic: (style?: 'light' | 'medium' | 'heavy') => void;
 };
@@ -15,7 +14,7 @@ type Props = {
 const phaseFor = (step: number) =>
   step <= 5 ? 'Подготовка' : step <= 10 ? 'Импорт' : 'Установка';
 
-export function Wizard({ step, onBack, onNext, onClose, onAction, haptic }: Props) {
+export function Wizard({ step, onBack, onNext, onAction, haptic }: Props) {
   const contentRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const imageDialogRef = useRef<HTMLDialogElement>(null);
@@ -38,17 +37,6 @@ export function Wizard({ step, onBack, onNext, onClose, onAction, haptic }: Prop
   return (
     <div className="wizard">
       <header className="wizard-header">
-        <button
-          type="button"
-          className="wizard-home"
-          aria-label="На главную"
-          onClick={() => {
-            haptic('light');
-            onClose();
-          }}
-        >
-          <Icon name="back" size={13} />
-        </button>
         <div className="wizard-heading">
           <div className="section-title wizard-title">Инструкция</div>
           <div className="section-sub">
@@ -163,6 +151,25 @@ export function Wizard({ step, onBack, onNext, onClose, onAction, haptic }: Prop
               {current.action.label}
               <Icon name="arrow" size={18} />
             </button>
+          )}
+
+          {current.actions && current.actions.length > 0 && (
+            <div className="step-actions">
+              {current.actions.map((item) => (
+                <button
+                  key={item.url}
+                  type="button"
+                  className="btn btn-secondary step-action"
+                  onClick={() => {
+                    haptic('light');
+                    onAction(item.url);
+                  }}
+                >
+                  {item.label}
+                  <Icon name="arrow" size={18} />
+                </button>
+              ))}
+            </div>
           )}
         </article>
       </main>

@@ -12,6 +12,7 @@ export type InstructionStep = {
   extra?: string;
   hints?: StepHint[];
   action?: StepAction;
+  actions?: StepAction[];
 };
 
 export const BOT_URL = 'https://t.me/revngshop_bot';
@@ -33,7 +34,7 @@ export const STEPS: InstructionStep[] = [
       "label": "Перейти в бота",
       "url": "https://t.me/revngshop_bot"
     },
-    "image": "images/instruction/step-01.png"
+    "image": "images/step-1-bot.webp?v=7"
   },
   {
     "id": 2,
@@ -43,7 +44,7 @@ export const STEPS: InstructionStep[] = [
       "label": "Открыть бота",
       "url": "https://t.me/revngshop_bot"
     },
-    "image": "images/instruction/step-02.png"
+    "image": "images/step-2-certificate.webp?v=7"
   },
   {
     "id": 3,
@@ -53,20 +54,14 @@ export const STEPS: InstructionStep[] = [
       "label": "Открыть бота",
       "url": "https://t.me/revngshop_bot"
     },
-    "image": "images/instruction/step-03.png"
+    "image": "images/step-3-esign.webp?v=7"
   },
   {
     "id": 4,
     "title": "Включите режим разработчика",
     "description": "На iPhone откройте «Настройки» → «Конфиденциальность и безопасность» → «Режим разработчика». Включите режим разработчика.",
-    "extra": "Если iPhone предложит перезагрузить устройство, подтвердите перезагрузку. После включения повторно подтвердите активацию режима разработчика.",
-    "hints": [
-      {
-        "type": "info",
-        "text": "Название и расположение пункта может немного отличаться в зависимости от версии iOS."
-      }
-    ],
-    "image": "images/instruction/step-04.png"
+    "extra": "Если не появился режим разработчика, то перезагрузите устройство и попробуйте еще раз",
+    "image": "images/step-4-developer-mode.webp?v=7"
   },
   {
     "id": 5,
@@ -85,13 +80,13 @@ export const STEPS: InstructionStep[] = [
       "label": "Перейти в бота",
       "url": "https://t.me/revngshop_bot"
     },
-    "image": "images/instruction/step-05.png"
+    "image": "images/step-5-files.webp?v=7"
   },
   {
     "id": 6,
     "title": "Откройте импорт в ESign",
     "description": "Откройте ESign и нажмите на три точки «•••» в правом верхнем углу. В появившемся меню выберите «Импорт».",
-    "image": "images/instruction/step-06.png"
+    "image": "images/step-6-import.webp?v=7"
   },
   {
     "id": 7,
@@ -103,31 +98,30 @@ export const STEPS: InstructionStep[] = [
         "text": "Повторите импорт для второго файла. Оба файла должны появиться внутри ESign."
       }
     ],
-    "image": "images/instruction/step-07.png"
+    "image": "images/step-7-certificate-import.webp?v=7"
   },
   {
     "id": 8,
     "title": "Импортируйте сертификат",
     "description": "В ESign нажмите на файл .p12 и выберите «Импортировать сертификат». Введите пароль, который бот отправил вместе с сертификатом.",
-    "hints": [
-      {
-        "type": "warning",
-        "text": "Не отправляйте пароль от сертификата другим людям."
-      }
-    ],
-    "image": "images/instruction/step-08.png"
+    "image": "images/step-8-ipa-import.webp?v=7"
   },
   {
     "id": 9,
     "title": "Найдите IPA-файл",
-    "description": "Найдите нужное приложение в интернете или Telegram-ботах. Сохраните его IPA-файл в приложение «Файлы», выбрав расположение «На iPhone».",
-    "hints": [
+    "description": "Найдите нужное приложение в канале или IPA-библиотеке. Сохраните его IPA-файл в приложение «Файлы», выбрав расположение «На iPhone».",
+    "extra": "Канал, где вы можете найти нужные приложения",
+    "actions": [
       {
-        "type": "info",
-        "text": "IPA-файл нужно получить самостоятельно. На этом сайте нет ссылок на скачивание."
+        "label": "Канал revenger.ios",
+        "url": "https://t.me/+U1Z6KRwWCsE4MTEy"
+      },
+      {
+        "label": "IPA библиотека",
+        "url": "https://t.me/appstoreipabot"
       }
     ],
-    "image": "images/instruction/step-09.png"
+    "image": "images/step-9-library.webp?v=7"
   },
   {
     "id": 10,
@@ -139,7 +133,7 @@ export const STEPS: InstructionStep[] = [
         "text": "После импорта приложение появится во внутренней библиотеке ESign."
       }
     ],
-    "image": "images/instruction/step-10.png"
+    "image": "images/step-10-apps.webp?v=7"
   },
   {
     "id": 11,
@@ -151,7 +145,7 @@ export const STEPS: InstructionStep[] = [
         "text": "Не закрывайте ESign до завершения процесса подписи."
       }
     ],
-    "image": "images/instruction/step-11.png"
+    "image": "images/step-11-sign.webp?v=7"
   },
   {
     "id": 12,
@@ -163,7 +157,7 @@ export const STEPS: InstructionStep[] = [
         "text": "Приложение должно появиться на главном экране вашего iPhone."
       }
     ],
-    "image": "images/instruction/step-12.png"
+    "image": "images/step-12-install.webp?v=7"
   }
 ];
 

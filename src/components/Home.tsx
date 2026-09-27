@@ -1,4 +1,3 @@
-import { FAQ } from './FAQ';
 import { Icon } from './Icon';
 import { VideoGuide } from './VideoGuide';
 import { SUPPORT_URL, TOTAL_STEPS } from '../config/steps';
@@ -14,7 +13,7 @@ export function Home({ onStart, onSupport, haptic }: Props) {
     <main className="page home-page">
       <header className="section-header">
         <h1 className="section-title">Инструкция</h1>
-        <p className="section-sub">Установка IPA на iPhone · {TOTAL_STEPS} шагов</p>
+        <p className="section-sub">Установка IPA на iOS · {TOTAL_STEPS} шагов</p>
       </header>
 
       <div className="hero-wrap">
@@ -56,8 +55,6 @@ export function Home({ onStart, onSupport, haptic }: Props) {
       </div>
 
       <VideoGuide haptic={haptic} />
-
-      <FAQ onSupport={onSupport} haptic={haptic} />
     </main>
   );
 }

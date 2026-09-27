@@ -20,7 +20,7 @@ export default function App() {
   const [resumeOpen, setResumeOpen] = useState(false);
 
   useEffect(() => {
-    const t = window.setTimeout(() => setLoading(false), 700);
+    const t = window.setTimeout(() => setLoading(false), 1250);
     return () => window.clearTimeout(t);
   }, []);
 
@@ -86,7 +86,6 @@ export default function App() {
                 step={progress.currentStep}
                 onBack={handleBack}
                 onNext={handleNext}
-                onClose={() => setScreen('home')}
                 onAction={openBot}
                 haptic={haptic}
               />
