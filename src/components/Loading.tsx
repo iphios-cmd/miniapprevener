@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 
 type Props = {
   visible: boolean;
 };
 
-/** Splash-загрузка в стиле IPA Library miniapp */
+/** Splash-загрузка в стиле Apple */
 export function Loading({ visible }: Props) {
   const [mounted, setMounted] = useState(visible);
   const [hiding, setHiding] = useState(false);
@@ -16,7 +16,7 @@ export function Loading({ visible }: Props) {
       return;
     }
     setHiding(true);
-    const t = window.setTimeout(() => setMounted(false), 480);
+    const t = window.setTimeout(() => setMounted(false), 520);
     return () => window.clearTimeout(t);
   }, [visible]);
 
@@ -31,13 +31,16 @@ export function Loading({ visible }: Props) {
       aria-label="Загрузка"
     >
       <div className="loading-inner">
-        <div className="loading-icon-wrap" aria-hidden="true">
-          <span className="loading-icon" />
-        </div>
-        <div className="loading-title">Инструкция</div>
-        <div className="loading-sub">Установка IPA на iOS</div>
-        <div className="loading-bar" role="progressbar" aria-label="Загрузка">
-          <span className="loading-bar-fill" />
+        <p className="loading-title">Инструкция</p>
+        <p className="loading-sub">Установка IPA на iOS</p>
+        <div className="loading-spinner" role="progressbar" aria-label="Загрузка">
+          {Array.from({ length: 8 }, (_, i) => (
+            <span
+              key={i}
+              className="loading-spinner-blade"
+              style={{ '--i': i } as CSSProperties}
+            />
+          ))}
         </div>
       </div>
     </div>

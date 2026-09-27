@@ -27,15 +27,14 @@ export default function App() {
   useEffect(() => {
     if (loading) return;
 
+    // После завершения всегда остаёмся на главной при повторном входе
     if (progress.completed) {
-      setScreen('success');
+      progress.restartGuide();
       return;
     }
 
     const hasPartial =
-      progress.currentStep > 1 &&
-      progress.currentStep <= TOTAL_STEPS &&
-      !progress.completed;
+      progress.currentStep > 1 && progress.currentStep <= TOTAL_STEPS;
 
     if (hasPartial) {
       setResumeOpen(true);
@@ -54,6 +53,14 @@ export default function App() {
     }
     progress.acceptAndStart();
     setScreen('wizard');
+  };
+
+  const goHome = () => {
+    // Сбрасываем флаг завершения, чтобы следующий заход был с главной
+    if (progress.completed) {
+      progress.restartGuide();
+    }
+    setScreen('home');
   };
 
   const handleNext = () => {
@@ -92,7 +99,7 @@ export default function App() {
             )}
             {screen === 'success' && (
               <Success
-                onHome={() => setScreen('home')}
+                onHome={goHome}
                 onRestart={() => {
                   progress.restartGuide();
                   setScreen('wizard');
